@@ -1,14 +1,18 @@
 class Test:
 
-    def __init__(self):
-        pass
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
 
-    def add(self, a, b):
-        return a+b
+    def add(self):
+        return self.a+self.b
 
-    def sub(self, a, b):
-        return a-b
+    def sub(self):
+        return self.a-self.b
 
-    def squre(self, a):
-        return a*a
+    def multiply(self):
+        return self.a*self.b
+
+    def squre(self):
+        return self.a*self.a
 
