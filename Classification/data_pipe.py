@@ -192,7 +192,7 @@ class TextVariable(BaseEstimator, TransformerMixin):
         return pd.concat([X, datasets], axis=1)
 
 
-class custom(BaseEstimator, TransformerMixin):
+class FillWith_dict(BaseEstimator, TransformerMixin):
 
     def __init__(self, var, pairs):
         self.var = var
@@ -208,27 +208,6 @@ class custom(BaseEstimator, TransformerMixin):
                 x1.append(self.pairs[i])
             except KeyError:
                 x1.append(0)
-        X[f'alpha_{self.var}'] = x1
-        del X[self.var]
-        return X
-
-
-class custom(BaseEstimator, TransformerMixin):
-
-    def __init__(self, var, pairs):
-        self.var = var
-        self.pairs = pairs
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X, y=None):
-        x1 = []
-        for i in X[self.var]:
-            try:
-                x1.append(self.pairs[i])
-            except KeyError:
-                x1.append(0)
-        X[f'alpha_{self.var}'] = x1
+        X[self.var] = x1
         return X
 
